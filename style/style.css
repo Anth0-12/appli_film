@@ -22,16 +22,37 @@ header h1 {
 }
 
 #section-1 {
-  height: 100vh;
-  background-color: blue;
+  height: auto;
 }
 
 #section-2 {
-  height: 100vh;
-  background-color: blue;
+  height: auto;
 }
 
 #section-3 {
-  height: 100vh;
-  background-color: blue;
+  height: auto;
+}
+
+#h2-1 {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#h2-2 {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#h2-3 {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }/*# sourceMappingURL=style.css.map */
