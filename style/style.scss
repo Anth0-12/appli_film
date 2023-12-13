@@ -21,7 +21,44 @@ header{
     h1{
         height: 100%;
         width: 100%;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+nav{
+    height: 10vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    form{
+        height: 50%;
+        width: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        .film-input{
+            height: 75%;
+            width: 50%;
+
+            border-radius: 5px;
+            border: solid 2px rgb(204, 227, 234, 0.634);
+            
+            padding-left: 10px;
+        }
+        .film-input::placeholder{
+            color: rgb(158, 175, 181);
+        }
+
+        .film-button{
+            background-color: transparent;
+            border: none;
+        }
     }
 }
 
