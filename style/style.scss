@@ -1,8 +1,33 @@
+@font-face {
+  font-family: "RethinkSans";
+  src:
+    local("RethinkSans"),
+    url("./../font/RethinkSans-Regular.ttf") format("TrueType");
+}
+
 *{
     margin: 0;
     padding: 0;
+    font-family: "RethinkSans";
 }
 
 body{
-    background-color: #f5f5f5;
+    background-color: rgba(223, 248, 255, 0.634);
+}
+
+header{
+    height: 10vh;
+
+    h1{
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@for $i from 1 through 3 {
+    #section-#{$i} {
+        height: 100vh;
+        background-color: blue;
+    }
 }
