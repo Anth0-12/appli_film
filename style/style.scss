@@ -27,7 +27,17 @@ header{
 
 @for $i from 1 through 3 {
     #section-#{$i} {
-        height: 100vh;
-        background-color: blue;
+        height: auto;
+    }
+}
+
+@for $i from 1 through 3 {
+    #h2-#{$i} {
+        height: 10%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
     }
 }
