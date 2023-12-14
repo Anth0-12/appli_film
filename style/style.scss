@@ -28,14 +28,14 @@ header{
 }
 nav{
     height: 10vh;
-
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 
     form{
-        height: 50%;
-        width: 50%;
+        height: 60%;
+        width: 70%;
 
         display: flex;
         align-items: center;
@@ -55,6 +55,25 @@ nav{
             color: rgb(158, 175, 181);
         }
 
+        #AfficheFilm{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            width: 23%;
+        }
+
+        @for $i from 1 through 2 {
+            .choix-#{$i} {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            width: 5%;
+            }
+        }
+
         .film-button{
             background-color: transparent;
             border: none;
@@ -65,13 +84,31 @@ nav{
 @for $i from 1 through 3 {
     #section-#{$i} {
         height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 }
+
+.A_Voir, .A_Venir {
+    
+    width: 100px;
+    background-color: rgb(208, 208, 208);
+        
+        .film{
+        width: 300px;
+
+        }
+    }
+
 
 @for $i from 1 through 3 {
     #h2-#{$i} {
         height: 10%;
         width: 100%;
+
         display: flex;
         align-items: center;
         justify-content: center;
