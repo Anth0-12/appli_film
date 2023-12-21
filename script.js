@@ -15,21 +15,23 @@ $(".film-button").on("click", function(event){
         $("<div></div>", {"id": `numDiv${compteurDiv}`, // Crée une div pour chaque film avec un id différent
                           "class": "ficheFilm"}).appendTo('.A_Voir'); // Ajoute la div au conteneur
                            
-        $(`#numDiv${compteurDiv}`).html('<p class="titreFilm" name="modifier" >' + filmInput.value + '</p>' 
-            + '<p class="categorieFilm" name="modifier">' + "Catégorie: " + listeCategories.value + '</p>' 
-            + '<div class="boutons"><button class="modifier">' + "Modifier" + '</button>' + '<button class="supprimer">' + "Supprimer" + '</button>'
-            +'<button>' + "Vu" + '</button>'); // Ajoute le contenu
+        $(`#numDiv${compteurDiv}`).html('<p class="titreFilm" name="titre" >' + filmInput.value + '</p>' 
+            + '<p class="categorieFilm" name="categorie">' + "Catégorie: " + listeCategories.value + '</p>' 
+            + '<div class="boutons"> <div class="boutonsCaches"><button class="modifier">' + "Modifier" + '</button>' 
+            + '<button class="changerVu">' + "Vu" + '</button></div>'
+            + '</button>' + '<button class="supprimer">' + "Supprimer" + '</button>'); // Ajoute le contenu
              
-        compteurDiv++; // Incrémente le compteur de div
+        compteurDiv++; // Incrémente le compteur de div 
 }
 else if(".film-input" !== null && ChoixVenir.checked) { // On fait pareil mais pour la case "A venir"
         $("<div></div>", {"id": `numDiv${compteurDiv}`, 
                           "class": "ficheFilm"}).appendTo('.A_Venir');
 
-        $(`#numDiv${compteurDiv}`).html('<p class="titreFilm" name="modifier" >' + filmInput.value + '</p>' 
-            + '<p class="categorieFilm" name="modifier">' + "Catégorie: " + listeCategories.value + '</p>' 
-            + '<div class="boutons"><button>' + "Modifier" + '</button>' + '<button class="supprimer">' + "Supprimer" + '</button>'
-            +'<button>' + "Vu" + '</button>');
+        $(`#numDiv${compteurDiv}`).html('<p class="titreFilm" name="titre" >' + filmInput.value + '</p>' 
+            + '<p class="categorieFilm" name="categorie">' + "Catégorie: " + listeCategories.value + '</p>' 
+            + '<div class="boutons"> <div class="boutonsCaches"><button class="modifier">' + "Modifier" + '</button>' 
+            + '<button class="changerVoir">' + "A voir" + '</button></div>'
+            + '</button>' + '<button class="supprimer">' + "Supprimer" + '</button>');
             
         compteurDiv++;
 } else {
@@ -37,6 +39,7 @@ else if(".film-input" !== null && ChoixVenir.checked) { // On fait pareil mais p
 }
 })
 
+//FONCTION SUPPRIMER
 // Sur le clic du bouton supprimer on supprime la fiche
 $(document).on("click", ".supprimer", function() {
         $(this).closest('.ficheFilm').remove(); 
@@ -45,3 +48,12 @@ $(document).on("click", ".supprimer", function() {
         // dans ce cas, l'élément avec la classe ficheFilm. En d'autres termes, il remonte dans l'arborescence du DOM 
         // (Document Object Model) à partir du bouton "Supprimer" pour trouver le premier parent qui a la classe ficheFilm.
 
+$(document).on("click", ".changerVu", function() {
+        $(this).closest('.ficheFilm').appendTo('.Vu');  
+        $(this).closest('.ficheFilm .boutonsCaches').remove();      
+});    
+
+$(document).on("click", ".changerVoir", function() {
+        $(this).closest('.ficheFilm').appendTo('.A_Voir');        
+        $(this).closest('.ficheFilm .changerVoir').replaceWith('<button class="changerVu">' + "Vu" + '</button>');        
+});        
