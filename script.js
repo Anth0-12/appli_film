@@ -22,6 +22,7 @@ $(".film-button").on("click", function(event){
             + '</button>' + '<button class="supprimer">' + "Supprimer" + '</button>'); // Ajoute le contenu
              
         compteurDiv++; // Incrémente le compteur de div 
+        console.log('clic')
 }
 else if(".film-input" !== null && ChoixVenir.checked) { // On fait pareil mais pour la case "A venir"
         $("<div></div>", {"id": `numDiv${compteurDiv}`, 
