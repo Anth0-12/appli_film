@@ -8,7 +8,7 @@ const supprimer = document.querySelectorAll(".supprimer");
 let compteurDiv = 1; // Variable qui permet de compter le nombre de films
 
 // Sur le clic du bouton envoyer 
-$(".film-button").on("click", function(event){
+$(document).on("click", '.film-button', function(event){
     event.preventDefault(); // Empeche la page de se recharger
 
     if (".film-input" !== null && ChoixVoir.checked ){ // Vérifie que le film a bien été saisi dans la barre de recherche et que la case "A voir" est coche
