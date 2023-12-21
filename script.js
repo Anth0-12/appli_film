@@ -48,11 +48,14 @@ $(document).on("click", ".supprimer", function() {
         // dans ce cas, l'élément avec la classe ficheFilm. En d'autres termes, il remonte dans l'arborescence du DOM 
         // (Document Object Model) à partir du bouton "Supprimer" pour trouver le premier parent qui a la classe ficheFilm.
 
+//FONCTIONS CHANGER SECTION
+// Sur le clic du bouton changerVu on change la fiche dans la section Vu et on supprime les boutons modifier et vu
 $(document).on("click", ".changerVu", function() {
         $(this).closest('.ficheFilm').appendTo('.Vu');  
         $(this).closest('.ficheFilm .boutonsCaches').remove();      
 });    
 
+// Sur le clic du bouton changerVoir on change la fiche dans la section A_Voir et on remplace le bouton "A voir" par "Vu"
 $(document).on("click", ".changerVoir", function() {
         $(this).closest('.ficheFilm').appendTo('.A_Voir');        
         $(this).closest('.ficheFilm .changerVoir').replaceWith('<button class="changerVu">' + "Vu" + '</button>');        
