@@ -60,3 +60,15 @@ $(document).on("click", ".changerVoir", function() {
         $(this).closest('.ficheFilm').appendTo('.A_Voir');        
         $(this).closest('.ficheFilm .changerVoir').replaceWith('<button class="changerVu">' + "Vu" + '</button>');        
 });        
+
+// Sur le clic du bouton modifier on demande un nouveau titre
+$(document).on("click", ".modifier", function() {
+        let nouveauTitre = prompt("Modifier le titre");
+        
+        while (nouveauTitre == "") // Tant que le titre est vide on redemande
+                nouveauTitre = prompt("Veuillez entrer un titre");
+        
+        if (nouveauTitre !== '') { // On vérifie que le titre n'est pas vide et on affiche le nouveau titre
+                $(this).closest('.ficheFilm').find('.titreFilm').text(nouveauTitre);
+        }   
+});  
