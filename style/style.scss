@@ -118,7 +118,7 @@ nav{
 
 @for $i from 1 through 3 {
     #section-#{$i} {
-        height: 30vh;
+        position: relative;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -132,7 +132,6 @@ nav{
         }
 
         .A_Voir, .A_Venir, .Vu{
-            height: 18vh;
             width: 90%;
 
             display: flex;
