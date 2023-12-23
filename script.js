@@ -14,7 +14,7 @@ $(".film-button").on("click", function(event){
     if (".film-input" !== null && ChoixVoir.checked ){ // Vérifie que le film a bien été saisi dans la barre de recherche et que la case "A voir" est coche
         $("<div></div>", {"id": `numDiv${compteurDiv}`, // Crée une div pour chaque film avec un id différent
                           "class": "ficheFilm"}).appendTo('.A_Voir'); // Ajoute la div au conteneur
-                           
+
         $(`#numDiv${compteurDiv}`).html('<p class="titreFilm" name="titre" >' + filmInput.value + '</p>' 
             + '<p class="categorieFilm" name="categorie">' + "Catégorie: " + listeCategories.value + '</p>' 
             + '<div class="boutons"> <div class="boutonsCaches"><button class="modifier">' + "Modifier" + '</button>' 
@@ -24,7 +24,7 @@ $(".film-button").on("click", function(event){
         compteurDiv++; // Incrémente le compteur de div 
 
         $("#section-1").css("display", "flex"); // Affiche la section A_Voir 
-        $("#section-2").css("display", "none"); // Cache la section A_Venir 
+        $("#section-2").css("display", "none"); // Cache la section A_Venir
 }
 else if(".film-input" !== null && ChoixVenir.checked) { // On fait pareil mais pour la case "A venir"
         $("<div></div>", {"id": `numDiv${compteurDiv}`, 
