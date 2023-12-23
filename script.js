@@ -1,7 +1,7 @@
 const filmInput = document.querySelector(".film-input");
 const ChoixVoir = document.querySelector(".Choix_A_Voir");
 const ChoixVenir = document.querySelector(".Choix_A_Venir");
-const AfficheFilm = document.querySelector("#affiche");
+const affiche = document.querySelector("#affiche");
 const listeCategories = document.querySelector("#listeCategories");
 const supprimer = document.querySelectorAll(".supprimer");
 
@@ -43,7 +43,8 @@ else if(".film-input" !== null && ChoixVenir.checked) { // On fait pareil mais p
 } else {
     console.log("erreur");
 }
-})
+});
+
 
 //FONCTION SUPPRIMER
 // Sur le clic du bouton supprimer on supprime la fiche
