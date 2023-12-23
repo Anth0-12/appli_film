@@ -22,6 +22,9 @@ $(".film-button").on("click", function(event){
             + '</button>' + '<button class="supprimer">' + "Supprimer" + '</button>'); // Ajoute le contenu
              
         compteurDiv++; // Incrémente le compteur de div 
+
+        $("#section-1").css("display", "flex"); // Affiche la section A_Voir 
+        $("#section-2").css("display", "none"); // Cache la section A_Venir 
 }
 else if(".film-input" !== null && ChoixVenir.checked) { // On fait pareil mais pour la case "A venir"
         $("<div></div>", {"id": `numDiv${compteurDiv}`, 
@@ -34,6 +37,9 @@ else if(".film-input" !== null && ChoixVenir.checked) { // On fait pareil mais p
             + '</button>' + '<button class="supprimer">' + "Supprimer" + '</button>');
             
         compteurDiv++;
+
+        $("#section-1").css("display", "none");
+        $("#section-2").css("display", "flex");
 } else {
     console.log("erreur");
 }
@@ -72,3 +78,20 @@ $(document).on("click", ".modifier", function() {
                 $(this).closest('.ficheFilm').find('.titreFilm').text(nouveauTitre);
         }   
 });  
+
+//Fonction afficher/cacher sections
+$(document).on("click", ".choix_A_Voir", function() {
+        $("#section-1").css("display", "flex");
+        $("#section-2").css("display", "none");
+        $("#section-3").css("display", "none");
+})
+$(document).on("click", ".choix_A_Venir", function() {
+        $("#section-1").css("display", "none");
+        $("#section-2").css("display", "flex");
+        $("#section-3").css("display", "none");
+})
+$(document).on("click", ".choix_Vu", function() {
+        $("#section-1").css("display", "none");
+        $("#section-2").css("display", "none");
+        $("#section-3").css("display", "flex");
+})
