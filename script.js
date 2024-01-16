@@ -17,6 +17,7 @@ $(".film-button").on("click", function(event){
 
         $(`#numDiv${compteurDiv}`).html('<p class="titreFilm" name="titre" >' + filmInput.value + '</p>' 
             + '<p class="categorieFilm" name="categorie">' + "Catégorie: " + listeCategories.value + '</p>' 
+            + '<img class="afficheFilm" name="affiche" src="" alt="Affiche du film" />' 
             + '<div class="boutons"> <div class="boutonsCaches"><button class="modifier">' + "Modifier" + '</button>' 
             + '<button class="changerVu">' + "Vu" + '</button></div>'
             + '</button>' + '<button class="supprimer">' + "Supprimer" + '</button>'); // Ajoute le contenu
@@ -31,7 +32,8 @@ else if(".film-input" !== null && ChoixVenir.checked) { // On fait pareil mais p
                           "class": "ficheFilm"}).appendTo('.A_Venir');
 
         $(`#numDiv${compteurDiv}`).html('<p class="titreFilm" name="titre" >' + filmInput.value + '</p>' 
-            + '<p class="categorieFilm" name="categorie">' + "Catégorie: " + listeCategories.value + '</p>' 
+            + '<p class="categorieFilm" name="categorie">' + "Catégorie: " + listeCategories.value + '</p>'
+            + '<img class="afficheFilm" name="affiche" src="" alt="Affiche du film" />' 
             + '<div class="boutons"> <div class="boutonsCaches"><button class="modifier">' + "Modifier" + '</button>' 
             + '<button class="changerVoir">' + "A voir" + '</button></div>'
             + '</button>' + '<button class="supprimer">' + "Supprimer" + '</button>');
@@ -96,3 +98,26 @@ $(document).on("click", ".choix_Vu", function() {
         $("#section-2").css("display", "none");
         $("#section-3").css("display", "flex");
 })
+
+
+// Ajouter un gestionnaire d'événement à l'input file
+$("#affiche").on("change", function() {
+    const numDiv = `numDiv${compteurDiv}`;
+    const afficheImage = $(`#${numDiv} .afficheFilm`);
+
+    // Vérifier s'il y a des fichiers sélectionnés
+    if (this.files && this.files[0]) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            // Attribuer la source de l'image
+            afficheImage.attr('src', e.target.result);
+        };
+
+        // Lire le fichier en tant que données URL
+        reader.readAsDataURL(this.files[0]);
+    } else {
+        // Effacer la source de l'image si aucun fichier n'est sélectionné
+        afficheImage.attr('src', '');
+    }
+});
