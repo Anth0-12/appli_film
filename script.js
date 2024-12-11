@@ -1,41 +1,42 @@
+// Sélection des éléments HTML nécessaires
 const filmInput = document.querySelector(".film-input"); 
 const ChoixVoir = document.querySelector(".Choix_A_Voir");
 const ChoixVenir = document.querySelector(".Choix_A_Venir");
 const listeCategories = document.querySelector("#listeCategories");
 
-let compteurDiv = 1; // Variable qui permet de compter le nombre de films
-let temporaryImageURL = ""; // Stocke temporairement l'image sélectionnée
+let compteurDiv = 1; // Compteur pour générer des identifiants uniques pour les fiches
+let temporaryImageURL = ""; // Stocke temporairement l'URL de l'image sélectionnée
 
-// Gestionnaire d'événement pour l'input file
+// Gestionnaire d'événement pour la sélection d'une image
 $("#affiche").on("change", function() {
     if (this.files && this.files[0]) {
-        const reader = new FileReader();
+        const reader = new FileReader(); // Crée un lecteur de fichiers
         reader.onload = function(e) {
-            temporaryImageURL = e.target.result; // Stocker temporairement l'URL de l'image
+            temporaryImageURL = e.target.result; // Stocke l'URL de l'image dans une variable temporaire
         };
-        reader.readAsDataURL(this.files[0]);
+        reader.readAsDataURL(this.files[0]); // Convertit le fichier sélectionné en URL
     } else {
-        temporaryImageURL = ""; // Réinitialiser si aucun fichier n'est sélectionné
+        temporaryImageURL = ""; // Réinitialise si aucun fichier n'est sélectionné
     }
 });
 
-// Sur le clic du bouton envoyer
+// Gestionnaire d'événement pour le bouton envoyer
 $(".film-button").on("click", function(event) {
-    event.preventDefault(); // Empêche la page de se recharger
+    event.preventDefault(); // Empêche le rechargement de la page
 
-    // Vérifie que le film a bien été saisi dans la barre de recherche
+    // Vérifie que les champs requis sont remplis
     if (filmInput.value !== "" && (ChoixVoir.checked || ChoixVenir.checked)) {
-        const sectionClass = ChoixVoir.checked ? ".A_Voir" : ".A_Venir";
-        const buttonClass = ChoixVoir.checked ? "changerVu" : "changerVoir";
-        const buttonText = ChoixVoir.checked ? "Vu" : "A voir";
+        const sectionClass = ChoixVoir.checked ? ".A_Voir" : ".A_Venir"; // Détermine la section cible
+        const buttonClass = ChoixVoir.checked ? "changerVu" : "changerVoir"; // Classe du bouton
+        const buttonText = ChoixVoir.checked ? "Vu" : "A voir"; // Texte du bouton
 
-        // Crée une div pour chaque film avec un id différent
+        // Crée une fiche pour le film
         $("<div></div>", {
-            id: `numDiv${compteurDiv}`,
-            class: "ficheFilm"
-        }).appendTo(sectionClass);
+            id: `numDiv${compteurDiv}`, // Attribue un ID unique
+            class: "ficheFilm" // Classe CSS pour le style
+        }).appendTo(sectionClass); // Ajoute la fiche à la section cible
 
-        // Ajoute le contenu à la fiche
+        // Ajoute le contenu de la fiche
         $(`#numDiv${compteurDiv}`).html(`
             <p class="titreFilm" name="titre">${filmInput.value}</p>
             <p class="categorieFilm" name="categorie">Catégorie: ${listeCategories.value}</p>
@@ -49,8 +50,8 @@ $(".film-button").on("click", function(event) {
             </div>
         `);
 
-        compteurDiv++; // Incrémenter le compteur de div
-        temporaryImageURL = ""; // Réinitialiser l'URL temporaire
+        compteurDiv++; // Incrémente le compteur pour le prochain film
+        temporaryImageURL = ""; // Réinitialise l'URL temporaire
 
         // Affiche la section correspondante
         if (ChoixVoir.checked) {
@@ -65,43 +66,45 @@ $(".film-button").on("click", function(event) {
     }
 });
 
-// Supprimer une fiche
+// Gestionnaire pour supprimer une fiche
 $(document).on("click", ".supprimer", function() {
-    $(this).closest(".ficheFilm").remove();
+    $(this).closest(".ficheFilm").remove(); // Supprime la fiche correspondante
 });
 
-// Changer la section vers "Vu"
+// Gestionnaire pour déplacer une fiche vers la section "Vu"
 $(document).on("click", ".changerVu", function() {
-    $(this).closest(".ficheFilm").appendTo(".Vu");
-    $(this).closest(".boutonsCaches").remove();
+    $(this).closest(".ficheFilm").appendTo(".Vu"); // Déplace la fiche
+    $(this).closest(".boutonsCaches").remove(); // Supprime les boutons non nécessaires
 });
 
-// Changer la section vers "À voir"
+// Gestionnaire pour déplacer une fiche vers la section "À voir"
 $(document).on("click", ".changerVoir", function() {
-    $(this).closest(".ficheFilm").appendTo(".A_Voir");
-    $(this).replaceWith('<button class="changerVu">Vu</button>');
+    $(this).closest(".ficheFilm").appendTo(".A_Voir"); // Déplace la fiche
+    $(this).replaceWith('<button class="changerVu">Vu</button>'); // Remplace le bouton
 });
 
-// Modifier le titre
+// Gestionnaire pour modifier le titre d'une fiche
 $(document).on("click", ".modifier", function() {
-    let nouveauTitre = prompt("Modifier le titre");
+    let nouveauTitre = prompt("Modifier le titre"); // Invite l'utilisateur à saisir un nouveau titre
     while (nouveauTitre === "") {
-        nouveauTitre = prompt("Veuillez entrer un titre");
+        nouveauTitre = prompt("Veuillez entrer un titre"); // Redemande si le champ est vide
     }
     if (nouveauTitre) {
-        $(this).closest(".ficheFilm").find(".titreFilm").text(nouveauTitre);
+        $(this).closest(".ficheFilm").find(".titreFilm").text(nouveauTitre); // Met à jour le titre
     }
 });
 
-// Afficher/Cacher sections
+// Gestionnaires pour afficher/cacher les sections
 $(".choix_A_Voir").on("click", function() {
     $("#section-1").css("display", "flex");
     $("#section-2, #section-3").css("display", "none");
 });
+
 $(".choix_A_Venir").on("click", function() {
     $("#section-2").css("display", "flex");
     $("#section-1, #section-3").css("display", "none");
 });
+
 $(".choix_Vu").on("click", function() {
     $("#section-3").css("display", "flex");
     $("#section-1, #section-2").css("display", "none");
