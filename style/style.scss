@@ -177,10 +177,11 @@ nav{
 
             .ficheFilm{
                 min-height: 15vh;
-                max-height: 30vh;
+                max-height: auto;
                 width: 280px;
     
                 margin: 10px;
+                padding: 5px;
     
                 display: flex;
                 align-items: center;
@@ -201,7 +202,7 @@ nav{
                 }
 
                 img {
-                    width: 50%;
+                    width: 100%;
 
                 }
 
