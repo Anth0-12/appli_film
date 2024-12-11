@@ -176,7 +176,8 @@ nav{
             
 
             .ficheFilm{
-                height: 15vh;
+                min-height: 15vh;
+                max-height: 30vh;
                 width: 280px;
     
                 margin: 10px;
@@ -197,6 +198,11 @@ nav{
                     margin: 1%;
 
                     color: rgb(213, 213, 213);
+                }
+
+                img {
+                    width: 50%;
+
                 }
 
                 .boutons{
